@@ -18,31 +18,31 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: >- 
-  Jorden's amazing website that's literally better than any other website
-  even google which is really quite useful but not as impressive as Jorden's
-  (this) website
+title: Breaking 404
+tagline: Because Growing Requires Breaking 404's
+description: >- # this means to ignore newlines until the next keyword
+  The HTTP status code "404" refers to something (usually a webpage) not being found. 
+  Growing is a result of learning. Learning is finding knowledge. Growing requires breaking 404's
+
+
+author: Jorden Quast
 email: JordenQuast@gmail.com
 
 github_username:  jorden-quast
 linkedin_username: jorden-quast
 instagram_username: jordenquast
 
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-url: "https://404industries.net" # the base hostname & protocol for your site, e.g. http://example.com
-
 # Build settings
-theme: minima
-# remote_theme: jekyll/minima
-# minima:
-#   skin: classic
+
+# Have to use basic theme, can't use remote theme with GH-Pages
+# (As of 12/20/2023)
+theme: minima 
+
+show_excerpts: true
 
 plugins:
   - jekyll-feed
-  - jekyll-remote-theme
+  - jekyll-seo-tag
 
 # Exclude from processing.
 # The following items will not be processed, by default.
