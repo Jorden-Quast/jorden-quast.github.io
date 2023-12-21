@@ -38,7 +38,7 @@ instagram_username: jordenquast
 # (As of 12/20/2023)
 theme: minima 
 
-show_excerpts: true
+# show_excerpts: true
 
 plugins:
   - jekyll-feed
