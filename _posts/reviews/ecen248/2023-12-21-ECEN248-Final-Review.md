@@ -54,7 +54,7 @@ Now that we have each state, and the transitions between them, we want to define
 we're at that state. Only mention anything that isn't 0, as there is an implicit convention that unmentioned variables are just equal to zero. Once
 you've done all of this, you'll end up with something that looks like this:
 
-![Finite State Machine]({{site.url}}/assets/ECEN248/FiniteStateMachine.png)
+![Finite State Machine]({{site.url}}/assets/ecen248/FiniteStateMachine.png)
 
 What's important to note, however, is that there are two different kinds of FSM's, and the difference between them is simple but *very* important.
 What we just described and output is a **Moore Machine**. The output of these FSM's is entirely dependent on their state. If you are at state
@@ -63,7 +63,7 @@ What we just described and output is a **Moore Machine**. The output of these FS
 The other kind of machine is what's known as a **Mealy Machine**, where at least some of the output is based on the current input *as well as* the
 current state. To denote this, we put those outputs on the transition arrows on the FSM like below
 
-![Mealy Machine]({{site.url}}/assets/ECEN248/MealyMachine.png)
+![Mealy Machine]({{site.url}}/assets/ecen248/MealyMachine.png)
 
 #### Checking Transitions
 
@@ -95,14 +95,14 @@ with, but hopefully isn't too complex:
 5. Once everything is either a state in its own group *or* a group of states that completely point to the same thing you have reached your final form
 6. Any groups with multiple states can become just one state
 
-![Example of the Partitioning Method]({{site.url}}/assets/ECEN248/StateReduction.png)
+![Example of the Partitioning Method]({{site.url}}/assets/ecen248/StateReduction.png)
 
 #### Controller Design
 
 The last major things to do with FSM's is to turn them into an actual circuit, which at its lowest level, is made of combinational components and is
 called a "Controller". The general structure like of these circuits looks like this:
 
-![General Controller Layout]({{site.url}}/assets/ECEN248/ControllerForm.png)
+![General Controller Layout]({{site.url}}/assets/ecen248/ControllerForm.png)
 
 Breaking down the diagram, the "m-bit state register" is a register that we use to store the state of our device. The "combinational logic" is the logic
 of the FSM, taking in inputs, transitioning to the next state, giving outputs, etc. The wires labeled N cary the "Next State" and "Current State"
@@ -139,7 +139,7 @@ FSM diagram and can be seen by the outside world.
 
 Once we have all of these things we can fill in our truth table, which in the end looks like this:
 
-![Completed FSM Truth Table]({{site.url}}/assets/ECEN248/FSMTruthTable.png)
+![Completed FSM Truth Table]({{site.url}}/assets/ecen248/FSMTruthTable.png)
 
 With that truth table, we can find the equations for each output and implement it using boolean logic.
 
@@ -176,7 +176,7 @@ In our diagrams, we have a few key conventions to pay attention to here:
 
 An example HLSM is using all of these is below:
 
-![Example HLSM]({{site.url}}/assets/ECEN248/ExampleHLSM.png)
+![Example HLSM]({{site.url}}/assets/ecen248/ExampleHLSM.png)
 
 A **very** important note about HLSM behavior, however, is that changes to stored data happens on clock edges *only*, whereas conditions are checked
 anytime. Another way to think about this is that, everything in an HLSM is like a Mealy machine in that it happens on outgoing transitions, so when
@@ -198,7 +198,7 @@ altered, and on the final controller. So to create the datapath:
 
 If you did all of this right, you might end up with something that looks like this:
 
-![Example Data-Path]({{site.url}}/assets/ECEN248/ExampleDataPath.png)
+![Example Data-Path]({{site.url}}/assets/ecen248/ExampleDataPath.png)
 
 In this diagram, we expose the "Dreg_clr" and "Dctr_clr" pins to be able to assign them to 0, and if you trace the data lines, any time you set
 "Dreg_ld" to high, It assigns it to the value from the Dctr register shifted right by 1, which is equivalent to dividing it by 2.
@@ -207,7 +207,7 @@ Now that this exists, we need to convert our HLSM to a FSM using the pins expose
 assigned a specific thing, so it's just about converting everything to single bit combinations, if you compare the FSM below to the example HLSM, you
 can see the similarity
 
-![FSM derived from HLSM]({{site.url}}/assets/ECEN248/DerivedFSM.png)
+![FSM derived from HLSM]({{site.url}}/assets/ecen248/DerivedFSM.png)
 
 ### Timing And Optimization
 
@@ -272,7 +272,7 @@ create a "pipeline" similar to a factory line.
 The same logic applies here, if you break up your circuit into a set of steps, and at the end of every step, add an extra register known as a
 "pipeline register", you can decrease your critical path, allowing your circuit to run much, much faster.
 
-![Example of Pipelining]({{site.url}}/assets/ECEN248/PipeliningExample.png)
+![Example of Pipelining]({{site.url}}/assets/ecen248/PipeliningExample.png)
 
 There's a few things to note of though:
 
@@ -302,7 +302,7 @@ simplest register loads its data on every cycle, which is great, for things like
 cycle, but it's less great for tasks like counting, where if you loaded an input on every cycle, you'd never be able to start counting, so past the
 basic register, there's a few different types.
 
-![The Most Basic Register]({{site.url}}/assets/ECEN248/BasicRegister.png)
+![The Most Basic Register]({{site.url}}/assets/ecen248/BasicRegister.png)
 
 #### Parallel-Load Register
 
@@ -313,7 +313,7 @@ from the input pins, but when load is low, the mux just gives the current output
 on every clock cycle, it just only updates with external data when load is high. It is called a Parallel-Load register because all of the bits load
 new data in parallel (at the same time), rather than waiting for anything else to finish.
 
-![The Parallel-Load Register]({{site.url}}/assets/ECEN248/ParallelLoadRegister.png)
+![The Parallel-Load Register]({{site.url}}/assets/ecen248/ParallelLoadRegister.png)
 
 #### Shift Register
 
@@ -325,7 +325,7 @@ additional pins. The first is the "Shift Right" pin, abbreviated to "Shr" contro
 parallel-load register. The second is the "shr_in" pin, which is the value to shift in, and can be 0 or 1. Putting this all together, we get the
 circuit seen in the below figure
 
-![The Shift Register]({{site.url}}/assets/ECEN248/ShiftRegister.png)
+![The Shift Register]({{site.url}}/assets/ecen248/ShiftRegister.png)
 
 Quick note, another kind of shift register is the rotate register, where instead of having a shr_in pin to pick it's next number, the rightmost bit
 that is being shifted out becomes the new leftmost bit.
@@ -338,7 +338,7 @@ register is control what data gets given to each flip flop. Building on this, if
 of functions we want our register to have.... well, we can start making our one little mux do a *lot* of different things. Then, we just expose the
 select bits of the mux as register pins and we can do as much as we want.
 
-![Example of MultiFunction Register]({{site.url}}/assets/ECEN248/MultiFunctionRegister.png)
+![Example of MultiFunction Register]({{site.url}}/assets/ecen248/MultiFunctionRegister.png)
 
 There's two additional things to note here with multifunction registers. The first is that load typically has the highest priority, and you need to
 make sure you design your mux such that it doesn't care about any of the other pins when load is high. The other key thing to note is that given a
@@ -357,7 +357,7 @@ The steps to design one of these registers is below:
 With a circuit like our shift registers, we can do multiplication and division veery quickly. These circuits are called "Shifters" and they are just
 function devices, they don't store any data, they just transform what they are given and spit it back out. It's basically a box of linked mux's.
 
-![Internals of a Bi-directional Shifter]({{site.url}}/assets/ECEN248/ShifterInternals.png)
+![Internals of a Bi-directional Shifter]({{site.url}}/assets/ecen248/ShifterInternals.png)
 
 Now the reason these are so powerful is because they make multiplying and dividing by powers of 2 super quick:
 
@@ -371,7 +371,7 @@ Now the reason these are so powerful is because they make multiplying and dividi
 
 The simplified symbol for a shifter is below, where N means that you shift your data, N times, causing you to either multiply or divide by $2^N$
 
-![General Symbol of a Left Shifter]({{site.url}}/assets/ECEN248/ShifterSymbol.png)
+![General Symbol of a Left Shifter]({{site.url}}/assets/ecen248/ShifterSymbol.png)
 
 To do multiplications by numbers that aren't powers of 2, we can do a "shift and add" operation. For example, if we want to do $5 * X$, instead of
 using some big, nasty, multiplier circuit to achieve that, we could rewrite it as $(4*X)+X$, which can be achieved by double left shifter (<<2) and a
@@ -405,7 +405,7 @@ wrong. Each of these shifters has an enable pin that decides wether to shift or 
 each individual shifter, we can create what's known as a **barrel shifter** that shifts based on the number of bits it's told. Do remember, shifting 8
 bits is... unnecessary, because then you'd just replace everything.
 
-![Barrel Shifter Internals]({{site.url}}/assets/ECEN248/BarrelShifter.png)
+![Barrel Shifter Internals]({{site.url}}/assets/ecen248/BarrelShifter.png)
 
 ### Counters
 
@@ -423,17 +423,17 @@ So lets describe the counter:
 Given all of this information, we can think think think. A register can store data and only updates on every clock.... A adder can do the
 incrementing.... An AND gate can check if everything is high... so if we put it all together, we can make a pretty cool little up-counter
 
-![The Basic Up-Counter]({{site.url}}/assets/ECEN248/BasicUpCounter.png)
+![The Basic Up-Counter]({{site.url}}/assets/ecen248/BasicUpCounter.png)
 
 But suppose we want to be able to load in a specific value? So that we don't *have* to start at zero. Well, like with pretty much everything else, we
 use a 2x1 mux to select between the updating the current value or loading another one in:
 
-![Up Counter with Loading]({{site.url}}/assets/ECEN248/LoadingUpCounter.png)
+![Up Counter with Loading]({{site.url}}/assets/ecen248/LoadingUpCounter.png)
 
 The other individual concept that we could add to the up-counter is to do the opposite, go down. Rather than using a adder, we'll use a subtractor,
 and instead of an AND to check that everything is high, we'll use a NOR to check that everything is low. These changes are below
 
-![Up/Down Counter]({{site.url}}/assets/ECEN248/UpDownCounter.png)
+![Up/Down Counter]({{site.url}}/assets/ecen248/UpDownCounter.png)
 
 So what are counters used for? The most common use is making a fast thing... slow.
 
@@ -456,7 +456,7 @@ stopped, but the issue is that we we're trying to get a clock, not just a delaye
 solve, just make a feedback loop so that when the tc pin is high, we link it back to the clear pin (clr) to reset our counter. Putting this all
 together, we get the circuit below:
 
-![A Simple Clock Divider]({{site.url}}/assets/ECEN248/SimpleClockDivider.png)
+![A Simple Clock Divider]({{site.url}}/assets/ecen248/SimpleClockDivider.png)
 
 But what if you want to do something wonky, like divide by a number that isn't a power of 2? Well, that's not terrible, another way to think about our
 clock dividers is that their output only becomes high after some number of clock cycles, so if we know the frequency of both the input signal and the
@@ -467,7 +467,7 @@ Here's why. If we used that count, then our counter would start, on the first cl
 we calculated. It's vitally important that we remember the starting place for a counter is 0 and **not** 1, otherwise we'd end up with a new clock
 that is very close to our expected frequency but slightly off. The updated count to do the reset at then becomes: $Count = \frac{C_{in}}{C_{out}} - 1$
 
-![Dividing a 60Hz Signal into a 1Hz Signal]({{site.url}}/assets/ECEN248/SixtyHzDivider.png)
+![Dividing a 60Hz Signal into a 1Hz Signal]({{site.url}}/assets/ecen248/SixtyHzDivider.png)
 
 ### Memory
 
@@ -488,18 +488,18 @@ to manage data. Great. But how does it work?
 
 I. Don't. Know. It's very complex, and quite frankly I find it unlikely for the internal details to be seen on the exam, but that's the key behavior.
 
-![Register File Symbol]({{site.url}}/assets/ECEN248/RegisterFile.png)
+![Register File Symbol]({{site.url}}/assets/ecen248/RegisterFile.png)
 
 To analyze them, we use a timing diagram like we've seen before:
 
-![Register File Timing Diagram]({{site.url}}/assets/ECEN248/RegisterFileTiming.png)
+![Register File Timing Diagram]({{site.url}}/assets/ecen248/RegisterFileTiming.png)
 
 #### Random Access Memory (RAM)
 
 RAM is memory that you can both read and write to, and it's pretty similar to a register file. The difference, however, is that it uses storage
 methods that are much more efficient than registers, so it can store far more words, around 512 to 1024!
 
-![RAM Symbol]({{site.url}}/assets/ECEN248/RamSymbol.png)
+![RAM Symbol]({{site.url}}/assets/ecen248/RamSymbol.png)
 
 There are 4 pins:
 
@@ -510,7 +510,7 @@ There are 4 pins:
 
 Inside, it is a decoder with the output connected to each word, and the word has a string of cells connected to it
 
-![RAM Internals]({{site.url}}/assets/ECEN248/RamInternals.png)
+![RAM Internals]({{site.url}}/assets/ecen248/RamInternals.png)
 
 Every cell has a "Word Enable" line coming from the decoder, which tells them that the specific word they belong to is being looked at. The read-write
 signal is given to every cell individually, but the diagram gets messy so we pass on drawing it.
@@ -521,7 +521,7 @@ This is the easier of the two RAM types to understand. It is basically just a NO
 connect it to the outside world. All together it has only 6 transistors (4 being in the form of NOT gates), making it much smaller, than the Register
 file, while still keeping things very fast. The big idea here is transistors and NOT gates, as the actual function of it is to complex for the course
 
-![SRAM Cell]({{site.url}}/assets/ECEN248/SRAMCell.png)
+![SRAM Cell]({{site.url}}/assets/ecen248/SRAMCell.png)
 
 It gets the name "Static" because once the data is in there, as long as the circuit is powered, it doesn't need to be touched again, so it's static.
 *This* is the big difference between SRAM and the other type we're about to talk about
@@ -535,7 +535,7 @@ introduction of a capacitor, as those take time to charge up, making write opera
 connected to ground, the signal will also slowly get lost over time, and has to be refreshed in order for the data to stay good, and that's where the
 "Dynamic" part of the name comes from.
 
-![DRAM Cell]({{site.url}}/assets/ECEN248/DRAMCell.png)
+![DRAM Cell]({{site.url}}/assets/ecen248/DRAMCell.png)
 
 #### Read Only Memory (ROM)
 
@@ -544,7 +544,7 @@ This is the third major memory type, and the most different from the other two i
 it's non-volatile, which means that even if the system loses power, it retains its memory. It's the kind of memory you want if you won't be changing
 things very often.
 
-![ROM Block]({{site.url}}/assets/ECEN248/ROMBlock.png)
+![ROM Block]({{site.url}}/assets/ecen248/ROMBlock.png)
 
 There are multiple kinds of ROM, but I'm going to speed run them. If you want more details, they are in RTL2 slides, starting at slide 13
 
@@ -552,14 +552,14 @@ There are multiple kinds of ROM, but I'm going to speed run them. If you want mo
 
 Cells get hardwired to 1's or 0's at manufacturing to match a certain "mask"
 
-![2 Mask Programmed ROM Cells Storing "10"]({{site.url}}/assets/ECEN248/MaskROM.png)
+![2 Mask Programmed ROM Cells Storing "10"]({{site.url}}/assets/ecen248/MaskROM.png)
 
 ##### Fuse-Based Programmable ROM
 
 This isn't programmed by the manufacturer, it uses a special device to program the cells, by overloading them with a high voltage to break a fuse,
 marking something as 0. It's also known as *One-Time Programmable (OTP) ROM* because the consumer can program it one time to suit a specific purpose
 
-![2 Fuse Programmed Cells Storing "10"]({{site.url}}/assets/ECEN248/FuseROM.png)
+![2 Fuse Programmed Cells Storing "10"]({{site.url}}/assets/ecen248/FuseROM.png)
 
 ##### Erasable Programmable ROM (EPROM)
 
@@ -567,13 +567,13 @@ Uses a floating gate transistor in each cell. A special device charges cells mar
 pulling the cell low. This is different from the OTP rom because if you shine a UV light onto the chip, it will erase all of the data as the trapped
 electrons will receive enough energy to escape.
 
-![2 EPROM Cells Storing "10"]({{site.url}}/assets/ECEN248/EPROM.png)
+![2 EPROM Cells Storing "10"]({{site.url}}/assets/ecen248/EPROM.png)
 
 ##### Electronically-Erasable Programmable ROM (EEPROM)
 
 Similar to EPROM, except instead of UV light, we do it with electricity. The tradeoff here is that it's done *one* word at a time.
 
-![EEPROM BLock]({{site.url}}/assets/ECEN248/EEPROMBlock.png)
+![EEPROM BLock]({{site.url}}/assets/ecen248/EEPROMBlock.png)
 
 ##### Flash Memory
 
