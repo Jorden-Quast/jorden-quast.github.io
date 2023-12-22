@@ -24,7 +24,7 @@ description: >- # this means to ignore newlines until the next keyword
   The HTTP status code "404" refers to something (usually a webpage) not being found. 
   Growing is a result of learning. Learning is finding knowledge. Growing requires breaking 404's
 
-
+author: Jorden Quast
 email: JordenQuast@gmail.com
 
 github_username:  jorden-quast
@@ -37,7 +37,7 @@ instagram_username: jordenquast
 # (As of 12/20/2023)
 theme: minima
 
-# show_excerpts: true
+# show_excerpts: true  # This shows the top bit from every post in a feed
 
 # Exclude from processing.
 # The following items will not be processed, by default.

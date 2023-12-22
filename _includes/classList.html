@@ -1,0 +1,11 @@
+{% assign classPosts = include.posts | where: "tag", {{include.searchTag}} %}
+
+<h3>{{ include.title }}</h3>
+
+<ul>
+{%for post in classPosts %}
+
+<li><a href="{{ post.url }}">{{ post.title }}</a></li>
+
+{% endfor %}
+</ul>
