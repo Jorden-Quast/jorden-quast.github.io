@@ -1,0 +1,24 @@
+
+<h2 class="post-list-heading">Posts</h2>
+
+{%- if include.posts.size > 0 -%}
+    <ul class="post-list">
+        {%- for post in include.posts -%}
+        <li>
+            {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+            <span class="post-meta">{{ post.date | date: date_format }}</span>
+            <h3>
+                <a class="post-link" href="{{ post.url | relative_url }}">
+                    {{ post.title | escape }}
+                </a>
+            </h3>
+            {{ post.excerpt }}
+        </li>
+        {%- endfor -%}
+    </ul>
+
+{%- else -%}
+    <p>Unfortunately, I haven't written anything yet! Check Back Later!</p>
+
+{%- endif -%}
+
