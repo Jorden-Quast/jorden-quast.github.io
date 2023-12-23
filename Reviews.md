@@ -5,9 +5,9 @@ permalink: /reviews
 ---
 
 I have fun writing reviews for classes, and I write them as if I was presenting a lecture on the material because it really helps me study. I can't
-promise any of these to be 100% accurate, so **always** trust your textbook / professor more, but I do try my best, and since they're what I
-personally use for exam prep, I have high motivation to make them as correct as possible. If you find any errors, I'm always happy to fix them, just
-shoot me an email at <a class="u-email" href="mailto:{{site.email}}">{{ site.email }}</a>
+promise any of these to be 100% accurate, so **always** trust your textbook / professor more, but I do try my best. Since they're what I personally
+use for exam prep, I have high motivation to make them as correct as possible. If you find any errors, I'm always happy to fix them, just shoot me an
+email at <a class="u-email" href="mailto:{{site.email}}">{{ site.email }}</a>
 
 {% assign schoolPosts = site.posts | where: "category", "reviews" %}
 
