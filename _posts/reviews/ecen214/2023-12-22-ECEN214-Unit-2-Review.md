@@ -6,6 +6,13 @@ category: reviews
 tag: ecen214
 ---
 
+For a pdf version of this review, <a href="{{site.url}}/assets/ecen214/ECEN214Unit2Review.pdf" download>click here</a>
+
+This review is okay, it can be long winded at times, but is focused on the "why" of this unit. My goal was to give a deep understanding of the
+concepts, and let the math build from intuition. It was my personal favorite unit, as it is backed by some pretty neat physics concepts when we start
+talking about circuit elements. What an Op-Amp is can be sort of hand-wavey, but that's because the internal circuit is too complex for our purposes,
+the analysis and what it does is what we focus on and care about.
+
 ## Topics Covered
 
 **Textbook:** Chapters 5, 6, and 7
@@ -94,9 +101,12 @@ Where:
 I call this **the Op-Amp Equation**, and should be the basis for your analysis, as it mathematically summarizes the operation of the component, and it
 makes analysis just solving for available variables. But with a little bit of arithmetic, we can write it in a different way:
 
-$$v_o = A(v_p - v_m)$$
+$$v_o = A(v_p - v_m) $$
+
 $$\frac{v_o}{A} = v_p - v_m$$
+
 $$0 = v_p - v_m$$
+
 $$v_p = v_m$$
 
 The oddest step here is that $\frac{v_o}{A}$ goes to zero, but you have to remember that A is infinitely large relative to the inputs, so anything
@@ -160,7 +170,9 @@ We can see the theory of the capacitor mathematically, starting with the basic e
 the capacitor, C is the capacitance, and V is the voltage across the device:
 
 $$Q=CV$$
+
 $$\frac{dQ}{dt}=C\frac{dV}{dt}$$
+
 $$I=C\frac{dV}{dt}$$
 
 What's vital to remember here, is that between lines 2 and 3, when I changed $\frac{dQ}{dt}$ into $I$, I didn't do that arbitrarily or randomly, it
@@ -173,12 +185,19 @@ short, which they are not, and a fully charged capacitor presents to a DC circui
 voltage through a capacitor, what would that formula look like? Well lets do some algebra (and a tad bit of calculus) and find out:
 
 $$I=C\frac{dv}{dt}$$
+
 $$Idt=Cdv$$
+
 $$\int_{t_0}^{t} Idt = C\int_{V_0}^{V}(1)dv$$
+
 $$\int_{t_0}^{t} Idt = Cx|_{V_0}^{V}$$
+
 $$\int_{t_0}^{t} Idt = C(V-V_0)$$
+
 $$CV - CV_0 = \int_{t_0}^{t} Idt$$
+
 $$CV = \int_{t_0}^{t} Idt + CV_0$$
+
 $$V = \frac{1}{C}\int_{t_0}^{t} Idt + V_0$$
 
 Phew, that was a bit of work, but hopefully not too tricky. The final answer is always the most important but its always fun (to me at least) to know
@@ -194,6 +213,7 @@ but since we have differentials so it can look a bit funkier than when we made t
 of the substitutions, but you'd probably be better off just substituting them in yourself rather than memorizing them:
 
 $$ P = CV\frac{dv}{dt} $$
+
 $$ P = I(\frac{1}{C}\int_{t_0}^{t} Idt + V_0)$$
 
 But how do we find the energy of a capacitor? We'll start by doing a unit analysis to come up with an approach: the energy of anything is
@@ -202,9 +222,13 @@ the derivative is the rate of change of something, then we can recognize that po
 was true in the first unit. From this, we can derive the formula for energy in a capacitor by going backwards and solving the separable differential equation:
 
 $$ P = CV\frac{dv}{dt}$$
+
 $$ Pdt = CVdv$$
+
 $$ \int Pdt = C \int Vdv$$
+
 $$ W = C(\frac{1}{2}V^2)$$
+
 $$ W = \frac{1}{2}CV^2$$
 
 Only special thing to note, I chose to use the "W" symbol for energy, as it stands for "Work" another unit measured in Joules. This is in terms of
@@ -223,9 +247,13 @@ supply in series:
 Using KVL we find our answer:
 
 $$ -V_s + V_1 + V_2 + V_3 = 0 $$
+
 $$ V_s = \frac{Q}{C_1} + \frac{Q}{C_2} + \frac{Q}{C_3} $$
+
 $$ \frac{Q}{C_{eq}} = Q(\frac{1}{C_1} + \frac{1}{C_2} + \frac{1}{C_3}) $$
+
 $$ \frac{1}{C_{eq}} = \frac{1}{C_1} + \frac{1}{C_2} + \frac{1}{C_3} $$
+
 $$ C_{eq} = \frac{1}{\frac{1}{C_1} + \frac{1}{C_2} + \frac{1}{C_3}} $$
 
 So, what we found is that the equivalent capacitance is the inverse sum of the inverses of each capacitor, which we can express as:
@@ -237,8 +265,11 @@ and therefore the charge is what's different. Knowing this, we're going to apply
 source all in parallel:
 
 $$ -Q_s + Q_1 + Q_2 + Q_3 = 0 $$
+
 $$ Q_s = Q_1 + Q_2 + Q_3 $$
+
 $$ C_{eq}V_s = C_1V_s + C_2V_s + C_3V_3 $$
+
 $$ C_{eq} = C_1 + C_2 + C_3 $$
 
 So again, we find the equivalent capacitance of capacitors in parallel is just the algebraic sum of each individual capacitance. We can express this
@@ -301,6 +332,7 @@ Just like before with capacitors, since $P = VI$, you can substitute either equa
 but it's probably better to remember that relationship and do it yourself so you have one less thing to memorize:
 
 $$ P = LI\frac{dI}{dt} $$
+
 $$ P = LV(\frac{1}{L}\int_{t_0}^{t} Vdt + I_0) $$
 
 Like mentioned in the capacitor section, Power is the time derivative of energy, so you can do a similar derivation to find that
@@ -314,8 +346,11 @@ tricky, since we don't have to do things in terms of charges, but lets look at s
 source and apply KVL:
 
 $$ -V_s + V_1 + V_2 + V_3 = 0 $$
+
 $$ V_s = V_1 + V_2 + V_3 $$
+
 $$ L_{eq}\frac{di}{dt} = L_1\frac{di}{dt} + L_2\frac{di}{dt} + L_3\frac{di}{dt} $$
+
 $$ L_{eq} = L_1 + L_2 + L_3 $$
 
 So I did something funky, cancelling out the $\frac{di}{dt}$ terms, but remember, these things are in series, and so their currents are all exactly the same which
@@ -328,9 +363,13 @@ the same, but their currents will be different. Lets apply these ideas to a circ
 (to make our lives easier, we're going to assume everything is uncharged, its all gonna cancel anyway):
 
 $$ -I_s + I_1 + I_2 + I_3 = 0 $$
+
 $$ I_s = I_1 + I_2 + I_3 $$
+
 $$ \frac{1}{L_{eq}}\int_{t_0}^{t} Vdt= \frac{1}{L_1}\int_{t_0}^{t} Vdt + \frac{1}{L_2}\int_{t_0}^{t} Vdt + \frac{1}{L_3}\int_{t_0}^{t} Vdt $$
+
 $$ \frac{1}{L_{eq}} = \frac{1}{L_1} + \frac{1}{L_2} + \frac{1}{L_3} $$
+
 $$ L_{eq} = \frac{1}{\frac{1}{L_1} + \frac{1}{L_2} + \frac{1}{L_3}} $$
 
 How neat, with a bit of gross algebra, we again find that the equivalent inductance is the inverse of the inverse some of the individual inductances.
@@ -370,17 +409,25 @@ connecting it to another resistor. So, how do we do this? Well, lets start an an
 Voltage Analysis (which is really just KCL in this case since there's only one node other than the reference):
 
 $$ I_C + I_R = 0 $$
+
 $$ I_C = -I_R $$
+
 $$ C\frac{dv}{dt} = -\frac{V_R}{R} $$
 
 From here, we've found a first-order differential equation, which might seem scary but luckily this one is separable, so lets solve it:
 
 $$ \frac{dv}{dt} = -\frac{V_R}{RC} $$
+
 $$ dv = -\frac{V_R}{RC}dt $$
+
 $$ \frac{1}{V_R}dv = -\frac{1}{RC}dt $$
+
 $$ \int_{V(t_0)}^{V(t)}\frac{1}{V_R}dv = \int_{t_0}^{t} -\frac{1}{RC}dt $$
+
 $$ \ln(V)|_{V(t_0)}^{V(t)} = -\frac{1}{RC}t|_{t_0}^{t} $$
+
 $$ \ln(V(t)) - \ln(V(t_0)) = -\frac{1}{RC}(t-t_0) $$
+
 $$ \ln(\frac{V(t)}{V(t_0)}) = -\frac{1}{RC}(t-t_0) $$
 
 Okay, we've done a fair bit, and we're getting close, but we're not quite done yet. This is the hardest part of this derivation, and in the end we'll
@@ -389,7 +436,9 @@ Anyway lets keep going, very quickly, lets acknowledge that for any analysis we 
 and having it be zero greatly simplifies our calculations as you're about to see:
 
 $$ \ln(\frac{V(t)}{V(0)}) = -\frac{1}{RC}t $$
+
 $$ \frac{V(t)}{V(0)} = e^{-\frac{1}{RC}t} $$
+
 $$ V(t) = V(0)e^{-\frac{1}{RC}t} $$
 
 Well look at that, we have found our equation for the voltage of the resistor in the circuit, how neat. Luckily for us, since everything is just two
@@ -402,7 +451,9 @@ open circuit, so the resistor it was originally connected to ends up having no e
 once we have this generic function, finding any other needed quantities isn't terrible, lets look:
 
 $$ I(t) = \frac{V(t)}{R} = \frac{V(0)}{R}e^{-\frac{1}{RC}t} $$
+
 $$ P(t) = V(t)I(t) = (V(0)e^{-\frac{1}{RC}t})(\frac{V(0)}{R}e^{-\frac{1}{RC}t}) = \frac{V(0)^2}{R}e^{-\frac{2}{RC}t} $$
+
 $$ W(t) = \int P(t)dt = \int \frac{V(0)^2}{R}e^{-\frac{2}{RC}t} dt = \frac{V(0)^2}{R}(\frac{RC}{2})e^{-\frac{2}{RC}t} =
 \frac{1}{2}V(0)^2Ce^{-\frac{2}{RC}t} $$
 
@@ -431,6 +482,7 @@ You'll notice some great similarities between formulas for the current in an RL 
 give them below:
 
 $$ V_{RC}(t) = V(0)e^{-\frac{1}{RC}t} $$
+
 $$ I_{RL}(t) = I(0)e^{-\frac{R}{L}t} $$
 
 What I want to take a second to look at is the exponent of e, as for both equations it's almost identical, having a constant multiplied by your time
@@ -456,6 +508,7 @@ With this, we can recognize 2 important things about first order circuits. The f
 by putting the exponent of e in terms of tau:
 
 $$ V_{RC}(t) = V(0)e^{-\frac{t}{tau}} $$
+
 $$ I_{RL}(t) = I(0)e^{-\frac{t}{tau}} $$
 
 Things are starting to look real similar now aren't they?
@@ -479,6 +532,7 @@ we're going to make a generalized approach that will remove a lot of the thought
 So if we look at this, when the switch gets flipped at t = 0, the inductor suddenly has a source connected to it, so lets do a KVL loop:
 
 $$ V_s = V_R + V_L $$
+
 $$ V_s = \frac{i}{R} + L\frac{di}{dt} $$
 
 If we do a rather long and complex derivation that follows the same steps as finding the capacitor voltage in the natural response we can end up with

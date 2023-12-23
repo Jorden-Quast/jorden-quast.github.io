@@ -37,7 +37,7 @@ instagram_username: jordenquast
 # (As of 12/20/2023)
 theme: minima
 
-# show_excerpts: true  # This shows the top bit from every post in a feed
+show_excerpts: true  # This shows the top bit from every post in a feed
 
 # Exclude from processing.
 # The following items will not be processed, by default.

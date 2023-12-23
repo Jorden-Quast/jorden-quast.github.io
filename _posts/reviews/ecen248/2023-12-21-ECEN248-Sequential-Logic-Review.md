@@ -1,13 +1,16 @@
 ---
 layout: post
-title: ECEN 248 Final Review
+title: ECEN 248 Sequential Logic Review
 author: Jorden Quast
 category: reviews
 tag: ecen248
 ---
 
-This review is... not the best. I wrote it very quickly, and with a complete emphasis on the second half of the class. I got a very good grade on the
-final, and this was pretty much the only way I studied, but it does *not* touch on anything from combinational logic
+For a pdf version of this review, <a href="{{site.url}}/assets/ecen248/ECEN248SequentialLogic.pdf" download>click here</a>
+
+This review is not all inclusive. I wrote it for the final, which was completely focused on the second half of the class discussing sequential logic.
+Because of this, topics such as boolean algebra / functions, and combinational circuits are not discussed here. I got a good grade on the final, and
+this was pretty much the only way I studied, so I think it's okay for what it does cover.
 
 ## Topics Covered
 
@@ -381,7 +384,9 @@ Division is a bit trickier to split like that, because you have to get your frac
 bit-width either, so you're pretty much always going to end up with an approximation. For example, if you needed to divide by 5:
 
 $$ \frac{1}{5} = 0.2 \approx \frac{102}{512} = 0.199 $$
+
 $$ 102 = 64 + 32 + 4 + 2 $$
+
 $$ \frac{X}{5} \approx \frac{64X + 32X + 4X + 2X}{512} $$
 
 So now that everything is represented in powers of 2, we can use our left and right shifters to multiply and divide respectively. But there's a
@@ -393,7 +398,7 @@ propagating.
 
 But how *do* we shift by 2 or 7 or some other arbitrary bit amount? Because the shifter we discussed at the top of this section could only shift by 1
 bit at a time, but then to do operations, we frequently have to shift by amounts greater than 1 (because who ever does math only multiplying by 2?). A
-naieve approach would be to just put in a larger mux, specifically Nx1, linking everything together that way. This might work fine for 2 or 3 bits,
+naive approach would be to just put in a larger mux, specifically Nx1, linking everything together that way. This might work fine for 2 or 3 bits,
 but then, when we hit the still relatively small size of 8 bits, we'd be in trouble. That would be a completely filled out 8x1 Mux for all 8 bits,
 leaving us with 64 wires. But that's only for one direction, if we wanted to shift in both left and right, we'd either need a 16x1 or 8x2 mux, but
 still it would be completely filled out! That is... very large, with 128 wires, leaving you prone to glitches and things breaking.
