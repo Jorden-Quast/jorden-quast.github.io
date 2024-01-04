@@ -36,6 +36,7 @@ instagram_username: jordenquast
 # Have to use basic theme, can't use remote theme with GH-Pages
 # (As of 12/20/2023)
 theme: minima
+markdown: kramdown
 
 show_excerpts: true  # This shows the top bit from every post in a feed
 
